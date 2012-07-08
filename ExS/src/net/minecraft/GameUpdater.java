@@ -81,7 +81,7 @@ public int percentage;
     "Permissions for Applet Refused.", "Please accept the permissions dialog to allow", "the applet to continue the loading process." };
 
   protected static boolean natives_loaded = false;
-  public static boolean forceUpdate = false;
+  public static boolean forceUpdate = OptionsPanel.forceCheckBox.isSelected();
   private String latestVersion;
   private String mainGameUrl;
   public boolean pauseAskUpdate;
@@ -782,43 +782,44 @@ protected void UnZip() throws PrivilegedActionException
         }
       }); 
     int i;
-    try
-    {
-                String szModsPath = path + "mods";
-        File modsdir = new File(szModsPath);
-        if(!modsdir.exists())
+    if(!OptionsPanel.doNotDeleteMods.isSelected())
+        try
         {
-        System.out.println(
-            "\nNot found: " + szModsPath);
-        }
+                    String szModsPath = path + "mods";
+            File modsdir = new File(szModsPath);
+            if(!modsdir.exists())
+            {
+            System.out.println(
+                "\nNot found: " + szModsPath);
+            }
 
-        if(!modsdir.isDirectory())
-        {
-        System.out.println(
-            "\nNot directory: " + szModsPath);
-        }
-        deleteRecursive(modsdir);
-        System.out.println(
-            "\nmods deleted: " + modsdir);
-        String szConfPath = path + "mods";
-        File confdir = new File(szConfPath);
-        if(!confdir.exists())
-        {
-        System.out.println(
-            "\nNot found: " + szConfPath);
-        }
+            if(!modsdir.isDirectory())
+            {
+            System.out.println(
+                "\nNot directory: " + szModsPath);
+            }
+            deleteRecursive(modsdir);
+            System.out.println(
+                "\nmods deleted: " + modsdir);
+            String szConfPath = path + "mods";
+            File confdir = new File(szConfPath);
+            if(!confdir.exists())
+            {
+            System.out.println(
+                "\nNot found: " + szConfPath);
+            }
 
-        if(!confdir.isDirectory())
-        {
-        System.out.println(
-            "\nNot directory: " + szConfPath);
+            if(!confdir.isDirectory())
+            {
+            System.out.println(
+                "\nNot directory: " + szConfPath);
+            }
+            deleteRecursive(confdir);
         }
-        deleteRecursive(confdir);
-    }
-    catch(Exception ex)
-    {
-      System.out.println(ex.toString());
-    }
+        catch(Exception ex)
+        {
+        System.out.println(ex.toString());
+        }
     szZipFilePath = path + "bin" + File.separator + "client.zip";
       
     File f = new File(szZipFilePath);

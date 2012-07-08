@@ -10,11 +10,11 @@ public class MinecraftLauncher
   public static void main(String[] args)
     throws Exception
   {
-    //float heapSizeMegs = (float)(Runtime.getRuntime().maxMemory() / 1024L / 1024L);
+    float heapSizeMegs = (float)(Runtime.getRuntime().maxMemory() / 1024L / 1024L);
 
-    //if (heapSizeMegs > 511.0F)
-    //  LauncherFrame.main(args);
-    //else
+    if (heapSizeMegs > 511.0F)
+      LauncherFrame.main(args);
+    else
       try {
         String pathToJar = MinecraftLauncher.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 

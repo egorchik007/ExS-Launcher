@@ -18,17 +18,20 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import net.minecraft.TransparentCheckbox;
 
 public class OptionsPanel extends JDialog
 {
   private static final long serialVersionUID = 1L;
-
+  public static TransparentCheckbox forceCheckBox = new TransparentCheckbox("Принудительно обновить клиент");
+  public static TransparentCheckbox doNotDeleteMods = new TransparentCheckbox("Не удалять папку mods при обновлении");
+  
   public OptionsPanel(Frame parent)
   {
     super(parent);
-
     setModal(true);
-
+    forceCheckBox.setForeground(Color.BLACK);
+    doNotDeleteMods.setForeground(Color.BLACK);
     JPanel panel = new JPanel(new BorderLayout());
     JLabel label = new JLabel("Настройки", 0);
     label.setBorder(new EmptyBorder(0, 0, 16, 0));
@@ -38,22 +41,21 @@ public class OptionsPanel extends JDialog
     JPanel optionsPanel = new JPanel(new BorderLayout());
     JPanel labelPanel = new JPanel(new GridLayout(0, 1));
     JPanel fieldPanel = new JPanel(new GridLayout(0, 1));
-    optionsPanel.add(labelPanel, "West");
-    optionsPanel.add(fieldPanel, "Center");
+    optionsPanel.add(labelPanel, "East");
+    //optionsPanel.add(fieldPanel, "West");
 
-    final JButton forceButton = new JButton("Обновить клиент!");
-    
-    forceButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent ae) {
-        GameUpdater.forceUpdate = true;
-        forceButton.setText("Клиент будет обновлен!");
-        forceButton.setEnabled(false);
-      }
-    });
-    labelPanel.add(new JLabel("Принудительно обновить клиент: ", 4));
-    fieldPanel.add(forceButton);
+    //forceButton.addActionListener(new ActionListener() {
+    //  public void actionPerformed(ActionEvent ae) {
+    GameUpdater.forceUpdate = true;
+    //    forceButton.setText("Клиент будет обновлен!");
+    //    forceButton.setEnabled(false);
+    //  }
+    //});
+    //labelPanel.add(new JLabel("Принудительно обновить клиент: ", 4));
+    labelPanel.add(forceCheckBox);
+    labelPanel.add(doNotDeleteMods);
 
-    labelPanel.add(new JLabel("Расположение клиента на компьютере: ", 4));
+    fieldPanel.add(new JLabel("Расположение клиента на компьютере: ", 4));
     TransparentLabel dirLink = new TransparentLabel(Util.getWorkingDirectory().toString()) {
       private static final long serialVersionUID = 0L;
 
