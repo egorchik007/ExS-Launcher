@@ -81,7 +81,7 @@ public int percentage;
     "Permissions for Applet Refused.", "Please accept the permissions dialog to allow", "the applet to continue the loading process." };
 
   protected static boolean natives_loaded = false;
-  public static boolean forceUpdate = OptionsPanel.forceCheckBox.isSelected();
+  private boolean forceUpdate = OptionsPanel.forceUpdate;
   private String latestVersion;
   private String mainGameUrl;
   public boolean pauseAskUpdate;
@@ -782,7 +782,7 @@ protected void UnZip() throws PrivilegedActionException
         }
       }); 
     int i;
-    if(!OptionsPanel.doNotDeleteMods.isSelected())
+    if(!OptionsPanel.doNotDeleteMods)
         try
         {
                     String szModsPath = path + "mods";

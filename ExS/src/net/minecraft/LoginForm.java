@@ -173,7 +173,7 @@ public class LoginForm extends TransparentPanel
         private static final long serialVersionUID = 1L;
       };
       editorPane.setContentType ( "text/html" );
-      editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Loading update news..</center></font></body></html>");
+      editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Загрузка новостей..</center></font></body></html>");
       editorPane.addHyperlinkListener(new HyperlinkListener() {
         public void hyperlinkUpdate(HyperlinkEvent he) {
           if (he.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
@@ -190,7 +190,7 @@ public class LoginForm extends TransparentPanel
     		  editorPane.setPage(new URL("http://exsserver.ru/news/index.htm"));
           } catch (Exception e) {
             e.printStackTrace();
-            editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Failed to update news<br></center></font></body></html>");
+            editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Новости недоступны.<br></center></font></body></html>");
           }
         }
       }

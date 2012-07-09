@@ -23,15 +23,26 @@ import net.minecraft.TransparentCheckbox;
 public class OptionsPanel extends JDialog
 {
   private static final long serialVersionUID = 1L;
-  public static TransparentCheckbox forceCheckBox = new TransparentCheckbox("Принудительно обновить клиент");
-  public static TransparentCheckbox doNotDeleteMods = new TransparentCheckbox("Не удалять папку mods при обновлении");
-  
+  public static boolean forceUpdate = false;
+  public static boolean doNotDeleteMods = false;
   public OptionsPanel(Frame parent)
   {
     super(parent);
     setModal(true);
+    final TransparentCheckbox forceCheckBox = new TransparentCheckbox("Принудительно обновить клиент");
+    final TransparentCheckbox doNotDeleteModsCheckBox = new TransparentCheckbox("Не удалять папку mods при обновлении");
+    forceCheckBox.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent actionEvent) {
+        forceUpdate = forceCheckBox.isSelected();
+      }
+    });
     forceCheckBox.setForeground(Color.BLACK);
-    doNotDeleteMods.setForeground(Color.BLACK);
+    doNotDeleteModsCheckBox.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent actionEvent) {
+        doNotDeleteMods = doNotDeleteModsCheckBox.isSelected();
+      }
+    });
+    doNotDeleteModsCheckBox.setForeground(Color.BLACK);
     JPanel panel = new JPanel(new BorderLayout());
     JLabel label = new JLabel("Настройки", 0);
     label.setBorder(new EmptyBorder(0, 0, 16, 0));
@@ -46,14 +57,14 @@ public class OptionsPanel extends JDialog
 
     //forceButton.addActionListener(new ActionListener() {
     //  public void actionPerformed(ActionEvent ae) {
-    GameUpdater.forceUpdate = true;
+    //GameUpdater.forceUpdate = true;
     //    forceButton.setText("Клиент будет обновлен!");
     //    forceButton.setEnabled(false);
     //  }
     //});
     //labelPanel.add(new JLabel("Принудительно обновить клиент: ", 4));
     labelPanel.add(forceCheckBox);
-    labelPanel.add(doNotDeleteMods);
+    labelPanel.add(doNotDeleteModsCheckBox);
 
     fieldPanel.add(new JLabel("Расположение клиента на компьютере: ", 4));
     TransparentLabel dirLink = new TransparentLabel(Util.getWorkingDirectory().toString()) {
