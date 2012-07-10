@@ -782,39 +782,41 @@ protected void UnZip() throws PrivilegedActionException
         }
       }); 
     int i;
-    if(!OptionsPanel.doNotDeleteMods)
         try
         {
-                    String szModsPath = path + "mods";
-            File modsdir = new File(szModsPath);
-            if(!modsdir.exists())
-            {
-            System.out.println(
-                "\nNot found: " + szModsPath);
-            }
+            
+            if(!OptionsPanel.doNotDeleteMods) {
+                String szModsPath = path + "mods";
+                File modsdir = new File(szModsPath);
+                if(!modsdir.exists())
+                {
+                System.out.println(
+                    "\nNot found: " + szModsPath);
+                }
 
-            if(!modsdir.isDirectory())
-            {
-            System.out.println(
-                "\nNot directory: " + szModsPath);
+                if(!modsdir.isDirectory())
+                {
+                System.out.println(
+                    "\nNot directory: " + szModsPath);
+                }
+                deleteRecursive(modsdir);
             }
-            deleteRecursive(modsdir);
-            System.out.println(
-                "\nmods deleted: " + modsdir);
-            String szConfPath = path + "mods";
-            File confdir = new File(szConfPath);
-            if(!confdir.exists())
-            {
-            System.out.println(
-                "\nNot found: " + szConfPath);
-            }
+            if (!OptionsPanel.doNotDeleteConfig) {
+                String szConfPath = path + "mods";
+                File confdir = new File(szConfPath);
+                if(!confdir.exists())
+                {
+                System.out.println(
+                    "\nNot found: " + szConfPath);
+                }
 
-            if(!confdir.isDirectory())
-            {
-            System.out.println(
-                "\nNot directory: " + szConfPath);
+                if(!confdir.isDirectory())
+                {
+                System.out.println(
+                    "\nNot directory: " + szConfPath);
+                }
+                deleteRecursive(confdir);
             }
-            deleteRecursive(confdir);
         }
         catch(Exception ex)
         {

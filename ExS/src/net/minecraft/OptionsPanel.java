@@ -25,12 +25,14 @@ public class OptionsPanel extends JDialog
   private static final long serialVersionUID = 1L;
   public static boolean forceUpdate = false;
   public static boolean doNotDeleteMods = false;
+  public static boolean doNotDeleteConfig = false;
   public OptionsPanel(Frame parent)
   {
     super(parent);
     setModal(true);
     final TransparentCheckbox forceCheckBox = new TransparentCheckbox("Принудительно обновить клиент");
     final TransparentCheckbox doNotDeleteModsCheckBox = new TransparentCheckbox("Не удалять папку mods при обновлении");
+    final TransparentCheckbox doNotDeleteConfigCheckBox = new TransparentCheckbox("Не удалять настройки модов при обновлении");
     forceCheckBox.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         forceUpdate = forceCheckBox.isSelected();
@@ -43,6 +45,12 @@ public class OptionsPanel extends JDialog
       }
     });
     doNotDeleteModsCheckBox.setForeground(Color.BLACK);
+    doNotDeleteConfigCheckBox.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent actionEvent) {
+        doNotDeleteConfig = doNotDeleteConfigCheckBox.isSelected();
+      }
+    });
+    doNotDeleteConfigCheckBox.setForeground(Color.BLACK);
     JPanel panel = new JPanel(new BorderLayout());
     JLabel label = new JLabel("Настройки", 0);
     label.setBorder(new EmptyBorder(0, 0, 16, 0));
@@ -65,6 +73,7 @@ public class OptionsPanel extends JDialog
     //labelPanel.add(new JLabel("Принудительно обновить клиент: ", 4));
     labelPanel.add(forceCheckBox);
     labelPanel.add(doNotDeleteModsCheckBox);
+    labelPanel.add(doNotDeleteConfigCheckBox);
 
     fieldPanel.add(new JLabel("Расположение клиента на компьютере: ", 4));
     TransparentLabel dirLink = new TransparentLabel(Util.getWorkingDirectory().toString()) {

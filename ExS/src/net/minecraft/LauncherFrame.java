@@ -16,7 +16,7 @@ import javax.swing.UIManager;
 
 public class LauncherFrame extends Frame
 {
-  public static final int VERSION = 18;
+  public static final int VERSION = 19;
   private static final long serialVersionUID = 1L;
   public Map<String, String> customParameters = new HashMap<String, String>();
   public Launcher launcher;

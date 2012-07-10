@@ -353,7 +353,7 @@ public class LoginForm extends TransparentPanel
     accountLink.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent arg0) {
         try {
-          Util.openLink(new URL("http://s.exsserver.ru/").toURI());
+          Util.openLink(new URL("http://exsserver.ru/").toURI());
         } catch (Exception e) {
           e.printStackTrace();
         }
