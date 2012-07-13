@@ -100,7 +100,7 @@ public class LauncherFrame extends Frame
       String parameters = "user=" + URLEncoder.encode(userName, "UTF-8") + "&password=" + URLEncoder.encode(password, "UTF-8") + "&version=" + LauncherFrame.VERSION;
       String result = Util.excutePost("http://s.exsserver.ru/server/login/auth.php", parameters);
       if (result == null) {
-        showError("Невозможно подключится к серверу!");
+        showError("Невозможно подключиться к серверу!");
         loginForm.setNoNetwork();
         return;
       }
