@@ -97,8 +97,8 @@ public int percentage;
     state = 1;
     try
     {
-      Class.forName("LZMA.LzmaInputStream");
-      lzmaSupported = true;
+      //Class.forName("LZMA.LzmaInputStream");
+      //lzmaSupported = true;
     }
     catch (Throwable localThrowable) {
     }
@@ -733,7 +733,7 @@ protected void extractNatives(String path) throws Exception
 
   protected void fatalErrorOccured(String error, Exception e) {
     e.printStackTrace();
-    fatalError = true;
+    //fatalError = true;
     fatalErrorDescription = ("Fatal error occured (" + state + "): " + error);
     System.out.println(fatalErrorDescription);
 
@@ -858,7 +858,8 @@ protected void UnZip() throws PrivilegedActionException
     {  
 
     ZipFile zf; 
-    Vector zipEntries = new Vector();
+    //Vector zipEntries = new Vector(); - быдлокод детектед!
+    Vector<ZipEntry> zipEntries = new Vector<ZipEntry>();
 
       zf = new ZipFile(szZipFilePath);    
       Enumeration en = zf.entries();

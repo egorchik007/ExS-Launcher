@@ -16,7 +16,7 @@ import javax.swing.UIManager;
 
 public class LauncherFrame extends Frame
 {
-  public static final int VERSION = 19;
+  public static final int VERSION = 21;
   private static final long serialVersionUID = 1L;
   public Map<String, String> customParameters = new HashMap<String, String>();
   public Launcher launcher;
@@ -82,7 +82,7 @@ public class LauncherFrame extends Frame
       validate();
       launcher.start();
       loginForm = null;
-      setTitle("Minecraft");
+      setTitle("ExS OFFLINE");
     } catch (Exception e) {
       e.printStackTrace();
       showError(e.toString());
@@ -132,7 +132,7 @@ public class LauncherFrame extends Frame
       launcher.start();
       loginForm.loginOk();
       loginForm = null;
-      setTitle("ExS");
+      setTitle("ExS Minecraft Client - exsserver.ru");
     } catch (Exception e) {
       e.printStackTrace();
       showError(e.toString());
