@@ -23,7 +23,7 @@ public class MinecraftLauncher
         if (os == os.windows)
             params.add("javaw");
         else
-            params.add("java");
+            params.add("java"); //ибо нехуй
         params.add("-Xmx1024m");
         params.add("-Xms512m");
         //params.add("-Dsun.java2d.noddraw=true");
