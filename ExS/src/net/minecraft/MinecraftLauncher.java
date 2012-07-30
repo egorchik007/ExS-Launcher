@@ -19,8 +19,11 @@ public class MinecraftLauncher
         String pathToJar = MinecraftLauncher.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 
         ArrayList<String> params = new ArrayList<String>();
-
-        params.add("javaw");
+        Util.OS os = Util.getPlatform();
+        if (os == os.windows)
+            params.add("javaw");
+        else
+            params.add("java");
         params.add("-Xmx1024m");
         params.add("-Xms512m");
         //params.add("-Dsun.java2d.noddraw=true");
