@@ -175,6 +175,7 @@ public class LoginForm extends TransparentPanel
       editorPane.setContentType ( "text/html" );
       editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Загрузка новостей..</center></font></body></html>");
       editorPane.addHyperlinkListener(new HyperlinkListener() {
+      
         public void hyperlinkUpdate(HyperlinkEvent he) {
           if (he.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
             try {
@@ -187,7 +188,7 @@ public class LoginForm extends TransparentPanel
       new Thread() {
         public void run() {
           try {
-    		  editorPane.setPage(new URL("http://exsserver.ru/news/index.htm"));
+    		  editorPane.setPage(new URL(Util.host + "news/index.htm"));
           } catch (Exception e) {
             e.printStackTrace();
             editorPane.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center>Новости недоступны.<br></center></font></body></html>");
@@ -298,7 +299,7 @@ public class LoginForm extends TransparentPanel
         accountLink.addMouseListener(new MouseAdapter() {
           public void mousePressed(MouseEvent arg0) {
             try {
-              Util.openLink(new URL("http://s.exsserver.ru/server/login/reg.php").toURI());
+              Util.openLink(new URL(Util.host + "reg.php").toURI());
             } catch (Exception e) {
               e.printStackTrace();
             }
@@ -353,7 +354,7 @@ public class LoginForm extends TransparentPanel
     accountLink.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent arg0) {
         try {
-          Util.openLink(new URL("http://exsserver.ru/").toURI());
+          Util.openLink(new URL(Util.host).toURI());
         } catch (Exception e) {
           e.printStackTrace();
         }

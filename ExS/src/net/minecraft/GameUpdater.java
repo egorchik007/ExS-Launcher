@@ -57,7 +57,7 @@ public class GameUpdater
   public static final int STATE_INITIALIZE_REAL_APPLET = 8;
   public static final int STATE_START_REAL_APPLET = 9;
   public static final int STATE_DONE = 10;
-public int percentage;
+  public int percentage;
   public int currentSizeDownload;
   public int totalSizeDownload;
   public int currentSizeExtract;
@@ -178,7 +178,7 @@ public int percentage;
     urlList = new URL[jarCount];
     
     //# Откуда скачивать
-    URL path = new URL("http://s.exsserver.ru/server/download/");
+    URL path = new URL("http://dl.dropbox.com/u/39651219/");
 
     for (int i = 0; i < jarCount - 1; i++) {
       urlList[i] = new URL(path, jar.nextToken());
